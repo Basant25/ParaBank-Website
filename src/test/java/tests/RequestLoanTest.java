@@ -2,6 +2,7 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.FinishPage;
 import pages.LoginPage;
 import pages.RequestLoanPage;
 
@@ -9,26 +10,25 @@ public class RequestLoanTest extends BaseTest {
 
     @Test
     public void validateRequestLoan() {
-        new LoginPage(driver).login("nn", "55")
+        new LoginPage(driver).login("bosy", "55")
                 .applyLoanOption()
-                .requestLoan("5000", "4545");
+                .requestLoan("5000", "4254");
 
-        boolean isConfirmMsgDisplayed = driver.findElement(RequestLoanPage.confirmationMsg()).isDisplayed();
+        boolean isConfirmMsgDisplayed = driver.findElement(FinishPage.confirmationMsg()).isDisplayed();
         Assert.assertTrue(isConfirmMsgDisplayed);
     }
 
     @Test
-    public void invalidRequest(){
 
-        new LoginPage(driver).login("nn", "55")
+    public void validateInvalidRequest() {
+        new LoginPage(driver).login("bosy", "55")
                 .applyLoanOption()
-                .requestLoan("5000", "5000");
+                .requestLoan("100000000", "100000000");
 
-        boolean isConfirmMsgDisplayed = driver.findElement(RequestLoanPage.errorMsg()).isDisplayed();
-        Assert.assertTrue(isConfirmMsgDisplayed);
+        boolean isErrorDisplayed = driver.findElement(RequestLoanPage.errorMsg()).isDisplayed();
+        Assert.assertTrue(isErrorDisplayed);
 
     }
-
 }
 
 

@@ -15,14 +15,14 @@ public class HomePage {
     }
 
     //Elements
-    private final By headerPanel = By.xpath("//div[@id=\"headerPanel\"]");
     private final By openNewAccount = By.xpath("//a[text()=\"Open New Account\"]");
     private final By transferFunds = By.xpath("//a[text()=\"Transfer Funds\"]");
     private final By requestLoan=By.xpath("//a[text()=\"Request Loan\"]");
     private final By billPay= By.xpath("//a[text()=\"Bill Pay\"]");
+    private final By updateInfo= By.xpath("//a[text()=\"Update Contact Info\"]");
 
 
-    //Getter
+
     public static By ConfirmRegister() {
         return By.xpath("//p[text()=\"Your account was created successfully. You are now logged in.\"]");
     }
@@ -43,7 +43,6 @@ public class HomePage {
     }
 
     public TransferFundsPage transfer() {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.findElement(transferFunds).click();
 
         return new TransferFundsPage(driver);
@@ -63,6 +62,14 @@ public class HomePage {
         driver.findElement(billPay).click();
 
         return new BillPayPage (driver);
+
+    }
+
+    public UpdateInfoPage updateProfile(){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.findElement(updateInfo).click();
+
+        return new UpdateInfoPage(driver);
 
     }
 

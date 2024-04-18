@@ -26,10 +26,6 @@ public class BillPayPage {
     private final By sendPaymentButton = By.xpath("(//input[@type=\"submit\"])[1]");
 
 
-//    getter
-    public static By PaymentComplete(){
-        return By.xpath("(//input[@type=\"submit\"])[1]");
-    }
 
     public static By ErrorMsg(){
         return By.className("error");
@@ -55,6 +51,5 @@ public class BillPayPage {
 
         return this;
     }
-
 
 }

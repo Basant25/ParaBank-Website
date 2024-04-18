@@ -20,10 +20,8 @@ public class RequestLoanPage {
     private final By fromAccountField = By.id("fromAccountId");
     private final By applyButton = By.xpath("(//input[@type=\"submit\"])[1]");
 
-    //getter
-    public static By confirmationMsg(){
-        return By.xpath("//p[text()=\"Congratulations, your loan has been approved.\"]");
-    }
+
+
     public static By errorMsg(){
         return By.xpath("//p[text()=\"You do not have sufficient funds for the given down payment.\"]");
     }

@@ -27,7 +27,6 @@ public class RegisterPage {
 //    private final  By errorRegister = By.id("customer.address.state.errors");
 
 
-    //getter
     public static By emptyField (String targetElement){
         return By.id("customer."+ targetElement +".errors");
     }

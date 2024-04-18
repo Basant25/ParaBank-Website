@@ -1,6 +1,7 @@
 package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -22,26 +23,24 @@ public class TransferFundsPage {
     private final By transferButton= By.xpath("(//input[@type=\"submit\"])[1]");
 
 
-    //Getter
-    public static By TransferComplete (){
-        return By.xpath("//h1[text()=\"Transfer Complete!\"]");
+    public static By errorTransfer(){
+        return By.id("amount.errors");
     }
+
 
     //Actions
     public TransferFundsPage setTransferFunds(String amount) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(amountField));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(fromAccountField));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(toAccountField));
-        driver.findElement(amountField).sendKeys(amount);
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(amountField));
         Select select = new Select(driver.findElement(fromAccountField));
         select.selectByIndex(0);
         Select select2 = new Select(driver.findElement(toAccountField));
         select2.selectByIndex(0);
+        Actions action = new Actions(driver);
+        action.moveToElement(driver.findElement(amountField)).click().sendKeys(amount).build().perform();
         driver.findElement(transferButton).click();
 
         return this;
 
     }
-
 }

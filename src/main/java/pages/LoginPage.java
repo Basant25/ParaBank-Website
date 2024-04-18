@@ -17,7 +17,6 @@ public class LoginPage {
     private final By loginButton = By.xpath("//input[@class=\"button\"]");
 
 
-    //Getter
     public static By ErrorLogin (){
         return By.xpath("//h1[text()=\"Error!\"]");
     }

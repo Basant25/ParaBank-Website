@@ -3,6 +3,7 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import pages.FinishPage;
 import pages.HomePage;
 import pages.RegisterPage;
 
@@ -16,9 +17,9 @@ public class RegisterTest extends BaseTest {
     String zipCode = ("1234");
     String phone = ("01055555");
     String SSN = ("55555");
-    String username = ("nony1");
-    String password = ("Vois_2561997");
-    String confirmPassword = ("Vois_2561997");
+    String username = ("bosy");
+    String password = ("55");
+    String confirmPassword = ("55");
 
 
     //Data

@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.BillPayPage;
+import pages.FinishPage;
 import pages.LoginPage;
 
 public class BillPayTest extends BaseTest{
@@ -37,18 +38,18 @@ public class BillPayTest extends BaseTest{
 
     @Test(dataProvider = "testData")
     public void validateBillPay( String PayeeName, String Address, String City,  String State, String ZipCode, String Phone, String Account, String VerifyAccount,String Amount, boolean expectedResult){
-        new LoginPage(driver).login("j","55")
+        new LoginPage(driver).login("bosy","55")
                 .billPayOption()
                 .billPay(PayeeName,Address,City,State,ZipCode,Phone,Account,VerifyAccount,Amount);
 
 
         if (expectedResult){
-            boolean isConfirmMessageDisplayed = driver.findElement(BillPayPage.PaymentComplete()).isDisplayed();
+            boolean isConfirmMessageDisplayed = driver.findElement(FinishPage.PaymentComplete()).isDisplayed();
             Assert.assertTrue(isConfirmMessageDisplayed);
         }
 
         else{
-            boolean isErrorDisplayed = driver.findElement(BillPayPage.ErrorMsg()).isDisplayed();
+            boolean isErrorDisplayed = driver.findElement( BillPayPage.ErrorMsg()).isDisplayed();
             Assert.assertTrue(isErrorDisplayed);
 
         }
